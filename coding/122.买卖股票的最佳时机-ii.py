@@ -12,6 +12,12 @@ class Solution:
             for i in range(1,len(prices)):
                   dp[0][i] = max(dp[0][i-1],dp[1][i-1]-prices[i])
                   dp[1][i] = max(dp[1][i-1],dp[0][i-1]+prices[i])
-            return dp[1][len(prices)-1]        
+            return dp[1][len(prices)-1]
+    def maxProfit1(self, prices: List[int]) -> int:
+            res=0
+            for i in range(1,len(prices)):
+                  if(prices[i]-prices[i-1]>0):
+                        res+=prices[i]-prices[i-1]
+            return res         
 # @lc code=end
 
