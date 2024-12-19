@@ -7,17 +7,12 @@
 # @lc code=start
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        low=1000002
-        res_max=0
-        for i in range(0,len(prices)-1):
-            price=prices[i]
-            _max=prices[i+1]
-            for j in range(i+1,len(prices)):
-                if prices[j] >_max:
-                    _max = prices[j]
-
-            if _max-price > res_max:
-                res_max=_max-price
-        return res_max
+        dp=[[0]*len(prices) for _ in range(2)]
+        dp[0][0]=-prices[0]
+        dp[1][0]=0
+        for i in range(1,len(prices)):
+            dp[0][i]=max(dp[0][i-1],-prices[i])
+            dp[1][i]=max(dp[1][i-1],dp[0][i]+prices[i])
+        return dp[1][len(prices)-1]
 # @lc code=end
 
