@@ -8,7 +8,7 @@
 class Solution:
     def reverseWords(self, s: str) -> str:
         s=s.strip()
-        inputs=s.split(' ')
+        inputs=s.split()
         i=0
         j=len(inputs)-1
         while(i<j):
