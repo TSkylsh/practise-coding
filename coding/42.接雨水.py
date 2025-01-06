@@ -9,28 +9,31 @@ from typing import *
 # [42] 接雨水
 #
 
+
+# @lcpr-template-start
+
+# @lcpr-template-end
 # @lc code=start
 class Solution:
     def trap(self, height: List[int]) -> int:
-        mp=[]
-        temp = height[:]
-        mp.append(0)
-        res=0
+        mq=[]
+        mq.append(0)
+        res = 0
         for i in range(1,len(height)):
-            if len(mp)==0 or temp[mp[-1]]>=temp[i]:
-                mp.append(i)
-            elif temp[mp[-1]]==temp[i]:
-                mp.pop()
-                mp.append(i)
+            if len(mq)==0 or height[mq[-1]]>height[i]:
+                mq.append(i)
+            elif height[mq[-1]]==height[i]:
+                mq.append(i)
             else:
-                while(len(mp)>0 and temp[mp[-1]]<temp[i]):
-                    now=mp[-1]
-                    mp.pop()
-                    if(len(mp)>0 ):
-                        maxh=min(temp[mp[-1]],temp[i])
-                        w=i-mp[-1]-1
-                        res+=(maxh-temp[now])*w
-                mp.append(i)
+                while len(mq)>0 and height[mq[-1]]<=height[i]:
+                    mid=mq[-1]
+                    hmid=height[mid]
+                    mq.pop()
+                    if len(mq)>0:
+                        h=min(height[mq[-1]],height[i])-hmid
+                        w=i-mq[-1]-1
+                        res+=h*w
+                mq.append(i)
         return res
                     
 # @lc code=end
