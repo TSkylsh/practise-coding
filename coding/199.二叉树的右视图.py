@@ -1,12 +1,7 @@
-# @lcpr-before-debug-begin
-from python3problem102 import *
-from typing import *
-# @lcpr-before-debug-end
-
 #
-# @lc app=leetcode.cn id=102 lang=python3
+# @lc app=leetcode.cn id=199 lang=python3
 #
-# [102] 二叉树的层序遍历
+# [199] 二叉树的右视图
 #
 
 # @lc code=start
@@ -18,13 +13,13 @@ from typing import *
 #         self.right = right
 import queue
 class Solution:
-    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         res=[]
         if root is  None:
             return res
         mq=queue.Queue()
         mq.put(root)
-        res.append([root.val])
+        res.append(root.val)
         while(mq.qsize()>0):
             temp=[]
             mq_size=mq.qsize()
@@ -37,9 +32,7 @@ class Solution:
                     temp.append(node.right.val)
                     mq.put(node.right)
             if len(temp)>0:
-                res.append(temp[:])
+                res.append(temp[-1])
         return res
-
-
 # @lc code=end
 

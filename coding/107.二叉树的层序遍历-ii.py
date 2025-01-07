@@ -1,12 +1,7 @@
-# @lcpr-before-debug-begin
-from python3problem102 import *
-from typing import *
-# @lcpr-before-debug-end
-
 #
-# @lc app=leetcode.cn id=102 lang=python3
+# @lc app=leetcode.cn id=107 lang=python3
 #
-# [102] 二叉树的层序遍历
+# [107] 二叉树的层序遍历 II
 #
 
 # @lc code=start
@@ -18,7 +13,7 @@ from typing import *
 #         self.right = right
 import queue
 class Solution:
-    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+    def levelOrderBottom(self, root: Optional[TreeNode]) -> List[List[int]]:
         res=[]
         if root is  None:
             return res
@@ -38,8 +33,6 @@ class Solution:
                     mq.put(node.right)
             if len(temp)>0:
                 res.append(temp[:])
-        return res
-
-
+        return res[::-1]
 # @lc code=end
 
