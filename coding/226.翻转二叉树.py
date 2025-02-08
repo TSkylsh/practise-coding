@@ -1,3 +1,8 @@
+# @lcpr-before-debug-begin
+from python3problem226 import *
+from typing import *
+# @lcpr-before-debug-end
+
 #
 # @lc app=leetcode.cn id=226 lang=python3
 #
@@ -20,13 +25,13 @@ class Solution:
         while len(ms)>0:
             node=ms[-1]
             ms.pop()
+            if node is None:
+                continue
             node.left,node.right=node.right,node.left
-            if node.left:
-                ms.append(node.left)
-            if node.right:
-                ms.append(node.right)
-        return root
+            ms.append(node.left)
+            ms.append(node.right)
 
+        return root
         
 # @lc code=end
 

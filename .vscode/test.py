@@ -5,7 +5,9 @@ values = inputs[1]
 dp=[0]*(w+1)
 for i in range(1,n+1):
     inputs[0][i],inputs[1][i]=map(int,input().split())
-for i in range(1,n+1):
+for j in range(weights[1],w+1):
+            dp[j]=dp[j-weights[1]]+values[1]
+for i in range(2,n+1):
     for j in range(w,0,-1):
         if j>=weights[i]:
             dp[j]=max(dp[j-weights[i]]+values[i],dp[j])
